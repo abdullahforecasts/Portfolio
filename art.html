@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swiss Bank · Abdullah Nawaz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English+SC&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="blue">
+<a class="home" href="index.html">AN</a>
+
+<header class="masthead">
+  <div class="rule gemrule"><img class="gem" src="img/emerald-cut.png" alt=""></div>
+  <h1>Swiss Bank</h1>
+  <p class="subtitle">Sketches, portraits, and paintings.</p>
+  <div class="rule gemrule"><img class="gem small" src="img/emerald-rough.png" alt=""></div>
+</header>
+<p class="intro">My way of responding to stuff.</p>
+<div class="rule emrule"><img class="scatter" src="img/emeralds-scatter.png" alt=""></div>
+
+<main class="gallery" id="gallery"></main>
+
+<div class="rule gemrule"><img class="gem small" src="img/emerald-rough.png" alt=""></div>
+<footer>© 2026 Abdullah Nawaz</footer>
+
+
+<script src="art-data.js"></script>
+<script>
+  // window.ART_DATA only exists in the self-contained preview build
+  const src = (kind, file) => window.ART_DATA ? ART_DATA[kind][file] : `art/${kind}/${file}.jpg`;
+  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  document.getElementById("gallery").innerHTML = PIECES.map(p => `
+    <article class="piece">
+      <div class="frame">
+        <img class="g" src="${src("bluetri", p.file)}" alt="${esc(p.title)}" loading="lazy">
+        <img class="o" src="${src("original", p.file)}" alt="" loading="lazy">
+      </div>
+      <div class="cap">
+        <p><b>${esc(p.title)}.</b>${p.date ? " " + esc(p.date) : ""}</p>
+        ${p.medium ? `<p><b>Medium:</b> ${esc(p.medium)}</p>` : ""}
+        ${p.paper ? `<p><b>Paper:</b> ${esc(p.paper)}</p>` : ""}
+        ${p.note ? `<p>${esc(p.note)}</p>` : ""}
+      </div>
+    </article>`).join("");
+</script>
+</body>
+</html>

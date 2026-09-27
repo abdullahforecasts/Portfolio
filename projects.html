@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Abdullah Nawaz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English+SC&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="blue">
+<a class="home" href="index.html">AN</a>
+
+<header class="masthead pubhead">
+  <div class="rule gemrule"><img class="gem" src="img/emerald-cut.png" alt=""></div>
+  <h1>Projects</h1>
+  <p class="subtitle">Things I have built.</p>
+  <div class="rule emrule"><img class="scatter" src="img/emeralds-scatter.png" alt=""></div>
+</header>
+
+<main class="pubs" id="pubs"></main>
+
+<div class="rule gemrule"><img class="gem small" src="img/emerald-rough.png" alt=""></div>
+<footer>© 2026 Abdullah Nawaz</footer>
+
+
+<script src="projects.js"></script>
+<script>
+  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  document.getElementById("pubs").innerHTML = PROJECTS.map(p => `
+    <article class="pub">
+      <p class="pub-title">${esc(p.name)}</p>
+      <p class="pub-desc">${esc(p.desc)}</p>
+      <p class="pub-links"><a href="${p.url}" target="_blank" rel="noopener">GitHub</a></p>
+    </article>`).join("");
+</script>
+</body>
+</html>
